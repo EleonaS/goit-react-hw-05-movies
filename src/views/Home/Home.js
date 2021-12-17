@@ -100,7 +100,6 @@ export default function MovieView() {
   return (
     <>
       <Container>
-        {isLoading && <Loader />}
         <Heading text="Trending today" />
         {movies.length > 0 && (
           <>
@@ -113,6 +112,7 @@ export default function MovieView() {
           </>
         )}
       </Container>
+      {isLoading && <Loader />}
     </>
   );
 }

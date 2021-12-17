@@ -53,7 +53,7 @@ function fetchMovieDetails(id) {
 
 function fetchMovieCast(id) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/movie/${id}/credits?&api_key=${key}&language=en-US`,
+    `${BASE_URL}/movie/${id}/credits?api_key=${key}&language=en-US`,
   );
 }
 
