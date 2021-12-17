@@ -50,7 +50,6 @@ const Status = {
 
 function MovieDetailsPage() {
   const { movieId } = useParams();
-
   const [movie, setMovie] = useState(
     {},
   );
@@ -157,11 +156,11 @@ function MovieDetailsPage() {
               >
                 <Routes>
                   <Route
-                    path="cast"
+                    path="/cast"
                     element={<Cast />}
                   />
                   <Route
-                    path="reviews"
+                    path="/reviews"
                     element={
                       <Reviews />
                     }
@@ -175,5 +174,4 @@ function MovieDetailsPage() {
     );
   }
 }
-
 export default MovieDetailsPage;

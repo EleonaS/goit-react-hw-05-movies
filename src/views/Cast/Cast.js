@@ -66,8 +66,7 @@ function Cast({ movieId }) {
 
                 <CastAbout>
                   <StyledName>
-                    {' '}
-                    {item.name}{' '}
+                    {item.name}
                   </StyledName>
                   <StyledCharacter>
                     {item.character}
@@ -89,5 +88,57 @@ function Cast({ movieId }) {
 Cast.propTypes = {
   movieId: PropTypes.string,
 };
-//export { Cast };
+
 export default Cast;
+
+//1v
+/*export default function Cast({ movieId }) {
+  const [cast, setCast] = useState([]);
+
+  useEffect(() => {
+    fetchMovieCast()
+      .then((request) => setCast(request.cast))
+      .catch(error =>
+        console.log(error),
+      );
+  }, [movieId]);
+
+  return (
+  <>
+    { cast && (
+    <Wrapper>
+      <CastList>
+          {cast.map((item, id) => (
+            <>
+              {item.profile_path && (
+                <CastItem key={id}>
+               
+                  <CastImage
+                    src={
+                      POSTER_URL +
+                      item.profile_path
+                    }
+                    alt={item.name}
+                    width="200"
+                  />
+                  <CastAbout>
+                    <StyledName>
+                      {item.name}
+                    </StyledName>
+                    <StyledCharacter>
+                      {item.character}
+                    </StyledCharacter>
+                  </CastAbout>
+                </CastItem>)}
+            </>
+          ))}
+      </CastList>
+        </Wrapper>)};
+    </>
+);
+};
+
+Cast.propTypes = {
+  movieId: PropTypes.string,
+};
+*/

@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  margin: 0 auto;
+  background-color: red;
   margin-top: 40px;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
-  box-shadow: 0 5px 10px
+  /*box-shadow: 0 5px 10px
     rgba(0, 0, 0, 0.5);
   &:hover {
     box-shadow: inset 0 5px 10px
       rgba(0, 0, 0, 0.5);
-  }
+  }*/
 `;
 
 const ReviewsList = styled.ul`

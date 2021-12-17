@@ -17,8 +17,6 @@ const CastList = styled.ul`
 
 const CastItem = styled.li`
   height: auto;
-  list-style: none;
-  text-decoration: none;
   overflow: hidden;
 `;
 
@@ -26,7 +24,7 @@ const CastImage = styled.img`
   object-fit: cover;
 `;
 const CastAbout = styled.div`
-  padding: 10px;
+  padding: 5px;
 `;
 
 const StyledName = styled.h3`
