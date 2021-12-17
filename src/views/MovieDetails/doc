@@ -1,0 +1,39 @@
+// v6
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  Outlet
+} from 'react-router-dom';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="profile/*" element={<Profile/>} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+function Profile() {
+  return (
+    <div>
+      <nav>
+        <Link to="me">My Profile</Link>
+      </nav>
+
+      <Routes>
+        <Route path="me" element={<MyProfile />} />
+        <Route path=":id" element={<OthersProfile />} />
+      </Routes>
+    </div>
+  );
+}
+
+
+////
+
+

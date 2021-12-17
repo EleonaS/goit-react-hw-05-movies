@@ -1,0 +1,34 @@
+export default function FilmsView  (){
+const [page,setPage ]= useState(1)
+const [movies,setMovies]=  
+  useState([])
+const [img,setImg]=  
+  useState('')
+const [isLoading,setIsLoading]=    
+  useState(false)
+
+  useEffect(() => {
+  
+
+        setIsLoading(true);
+        api.getFilms(page)
+            .then(({ data }) => {
+                setMovies(prevState => [...prevState, ...filterMovies(data.results)]);
+            })
+            .catch(error => console.log(error))
+            .finally(() => {
+                setIsLoading(false);
+                if (page > 1) {
+                    window.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: 'smooth',
+                    });
+                }
+            });
+  }, [page]);
+  
+  /////
+  useEffect(() => {
+    getFilmsById(filmId).then(({ data }) => setFilm(data))
+    
+  }, [filmId]);
