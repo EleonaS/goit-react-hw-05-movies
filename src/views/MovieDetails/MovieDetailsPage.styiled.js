@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const MovieCard = styled.div`
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+flex-direction: row;*/
   max-width: 1000px;
   border-radius: 10px;
 
@@ -28,6 +28,19 @@ const MovieCard = styled.div`
       10px 5px;
   }
 `;
+
+const WrapperCard = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+const WrapperAdditional = styled.div`
+  /*width: 300px;
+  background-color: tomato;
+  margin-right: auto;
+  margin-left: auto;*/
+`;
+
 const StyledPoster = styled.img`
   display: block;
   width: 300px;
@@ -35,10 +48,13 @@ const StyledPoster = styled.img`
   border-radius: 10px;
   margin-top: auto;
   margin-bottom: auto;
+  box-shadow: 0 1px 3px 0
+      rgb(0 0 0 / 20%),
+    0 2px 5px 0 rgb(0 0 0 / 14%),
+    0 2px 10px -1px rgb(0 0 0 / 12%);
 `;
 
 const Content = styled.div`
-  display: inline-block;
   padding: 20px 20px 20px 20px;
 `;
 
@@ -60,27 +76,25 @@ const GenresList = styled.ul`
 
 const GenresListItem = styled.li``;
 
-/*link {
-  display: inline-block;
-  text-decoration: none;
-  */
-
 const StyledRating = styled.span`
   width: 30px;
   height: 30px;
   padding: 5px;
-  border-radius: 5px;
+
+  border-radius: 50%;
   color: #000;
   background-color: orange;
 `;
 /*const StyledListItem = styled.li`
 `;*/
 
-const StyledNav = styled.nav`
+const StyledNav = styled.ul`
   margin-top: 10px;
+  display: flex;
 `;
 export {
   MovieCard,
+  WrapperCard,
   StyledPoster,
   Content,
   Info,
@@ -89,4 +103,5 @@ export {
   GenresListItem,
   StyledRating,
   StyledNav,
+  WrapperAdditional,
 };

@@ -22,23 +22,24 @@ const MovieInfo = styled.div`
   text-align: center;
   /*padding: ;
 */
-  font-size: 20px;
 `;
 
 const Title = styled.h3`
   position: relative;
   font-weight: 600;
   color: brown;
+  font-size: 20px;
 `;
 
 const WrapperInfo = styled.div`
   display: flex;
   text-align: center;
   justify-content: space-evenly;
-  position: relative;
+  align-items: center;
 
   bottom: 0px;
   margin: 0px;
+  font-size: 15px;
 `;
 
 const Date = styled.p`
@@ -48,7 +49,9 @@ const Date = styled.p`
 const VoteAverage = styled.p`
   width: 30px;
   height: 30px;
-  border-radius: 5px;
+  padding: 5px;
+  /*border-radius: 5px;*/
+  border-radius: 50%;
   color: #000;
   background-color: orange;
 `;

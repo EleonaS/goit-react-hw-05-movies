@@ -19,9 +19,6 @@ export function fetchBookById(bookId) {
   return fetchWithErrorHandling(`${BASE_URL}/books/${bookId}?_expand=author`);
 }
 ///
-export const getFilms = page => axios.get(BASE_URL + `/trending/movie/day` + `?page=${page}&api_key=${key}`)
-
-export const getFilmsById= id=> axios.get(BASE_URL + `/movie/${id}?api_key=${key}`)
 
 
 

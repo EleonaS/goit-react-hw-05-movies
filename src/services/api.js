@@ -51,18 +51,18 @@ function fetchMovieDetails(id) {
 //запросы на /credits актерский состав
 // GET   /movie/{movie_id}/credits
 
-function fetchMovieCast(id) {
+function fetchMovieCast(movieId) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/movie/${id}/credits?api_key=${key}&language=en-US`,
+    `${BASE_URL}/movie/${movieId}/credits?api_key=${key}&language=en-US`,
   );
 }
 
 //запросы на /reviews
-//   /movie/{movie_id}/reviews
+//  /movie/{movie_id}/reviews
 
-function fetchMovieReviews(id) {
+function fetchMovieReviews(movieId) {
   return fetchWithErrorHandling(
-    `${BASE_URL}/movie/${id}/reviews?api_key=${key}&language=en-US`,
+    `${BASE_URL}/movie/${movieId}/reviews?api_key=${key}&language=en-US`,
   );
 }
 

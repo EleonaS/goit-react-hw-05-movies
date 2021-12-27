@@ -1,13 +1,17 @@
-import { lazy, Suspense } from 'react';
+//import {
+//lazy,
+//Suspense
+//} from 'react';
 import {
   useEffect,
   useState,
 } from 'react';
 import {
   useParams,
-  Routes,
-  Route,
+  // Routes,
+  //Route,
   NavLink,
+  Outlet,
 } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
@@ -28,19 +32,21 @@ import {
   GenresListItem,
   StyledRating,
   StyledNav,
+  WrapperCard,
+  WrapperAdditional,
 } from './MovieDetailsPage.styiled';
 import { StyledButton } from 'Components/Button/Button.styled';
-
-const Cast = lazy(
+import { active } from 'Components/Navigation/Navigation';
+/*const Cast = lazy(
   () =>
     import(
       '../Cast/Cast'
-    ) /* webpackChunkName: "cast-page" */,
-);
-const Reviews = lazy(
+    ) /* webpackChunkName: "cast-page" ,*/
+//);
+/*const Reviews = lazy(
   () => import('../Reviews/Reviews'),
   /* webpackChunkName: "reviews-page" */
-);
+//);*/
 
 const Status = {
   PENDING: 'pending',
@@ -49,7 +55,7 @@ const Status = {
 };
 
 function MovieDetailsPage() {
-  const { movieId } = useParams();
+  const { movieId } = useParams(null);
   const [movie, setMovie] = useState(
     {},
   );
@@ -89,87 +95,86 @@ function MovieDetailsPage() {
     return (
       <>
         <GoBackButton />
-        <MovieCard>
-          <StyledPoster
-            src={
-              POSTER_URL +
-              movie.poster_path
-            }
-            alt={movie.original_title}
-          />
-          <Content>
-            <StyledTitle>
-              {movie.original_title}
-            </StyledTitle>
-            <div>
-              <Info>Rating:</Info>
-              <StyledRating>
-                {movie.vote_average}
-              </StyledRating>
-            </div>
+        <>
+          <MovieCard>
+            <WrapperCard>
+              <StyledPoster
+                src={
+                  POSTER_URL +
+                  movie.poster_path
+                }
+                alt={
+                  movie.original_title
+                }
+              />
+              <Content>
+                <StyledTitle>
+                  {movie.original_title}
+                </StyledTitle>
+                <div>
+                  <Info>Rating:</Info>
+                  <StyledRating>
+                    {movie.vote_average}
+                  </StyledRating>
+                </div>
 
-            {movie.genres && (
-              <>
-                <Info>Genres:</Info>
-                <GenresList>
-                  {movie.genres.map(
-                    (item, index) => (
-                      <GenresListItem
-                        key={index}
-                      >
-                        {item.name}
-                      </GenresListItem>
-                    ),
-                  )}
-                </GenresList>
-              </>
-            )}
+                {movie.genres && (
+                  <>
+                    <Info>Genres:</Info>
+                    <GenresList>
+                      {movie.genres.map(
+                        (
+                          item,
+                          index,
+                        ) => (
+                          <GenresListItem
+                            key={index}
+                          >
+                            {item.name}
+                          </GenresListItem>
+                        ),
+                      )}
+                    </GenresList>
+                  </>
+                )}
 
-            <div>
-              <Info>About:</Info>
-              <span>
-                {movie.overview}
-              </span>
-            </div>
+                <div>
+                  <Info>About:</Info>
+                  <span>
+                    {movie.overview}
+                  </span>
+                </div>
+              </Content>
+            </WrapperCard>
             <br />
             <hr />
 
-            <div>
+            <WrapperAdditional>
               <Info>
                 Additional information:
               </Info>
               <StyledNav>
-                <NavLink to="cast">
+                <NavLink
+                  to={`/movies/${movieId}/cast`}
+                  style={active}
+                >
                   <StyledButton>
                     Cast
                   </StyledButton>
                 </NavLink>
-                <NavLink to="reviews">
+                <NavLink
+                  to={`/movies/${movieId}/reviews`}
+                  style={active}
+                >
                   <StyledButton>
                     Reviews
                   </StyledButton>
                 </NavLink>
               </StyledNav>
-
-              <Suspense
-                fallback={<Loader />}
-              >
-                <Routes>
-                  <Route
-                    path="/cast"
-                    element={<Cast />}
-                  />
-                  <Route
-                    path="/reviews"
-                    element={
-                      <Reviews />
-                    }
-                  />
-                </Routes>
-              </Suspense>
-            </div>
-          </Content>
-        </MovieCard>
+            </WrapperAdditional>
+            <Outlet />
+          </MovieCard>
+        </>
       </>
     );
   }

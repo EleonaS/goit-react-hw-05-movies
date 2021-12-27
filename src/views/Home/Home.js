@@ -111,8 +111,8 @@ export default function MovieView() {
             />
           </>
         )}
+        {isLoading && <Loader />}
       </Container>
-      {isLoading && <Loader />}
     </>
   );
 }

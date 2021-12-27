@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 import {
   StyledButton,
   WraperButton,
@@ -8,7 +8,7 @@ import {
 
 //https://reacttraining.com/blog/react-router-v6-pre/
 
-function GoBackButton() {
+/*function GoBackButton() {
   const navigate = useNavigate();
 
   const onGoBack = () => {
@@ -23,6 +23,37 @@ function GoBackButton() {
       >
         Go Back
       </StyledButton>
+    </WraperButton>
+  );
+}
+*/
+
+//
+import {
+  Link,
+  useLocation,
+} from 'react-router-dom';
+
+function GoBackButton() {
+  const location = useLocation();
+  const pathname =
+    location.state?.from?.pathname;
+  const search =
+    location.state?.from?.search;
+
+  return (
+    <WraperButton>
+      <Link
+        to={
+          pathname
+            ? `${pathname}${search}`
+            : '/'
+        }
+      >
+        <StyledButton type="button">
+          Go Back
+        </StyledButton>
+      </Link>
     </WraperButton>
   );
 }

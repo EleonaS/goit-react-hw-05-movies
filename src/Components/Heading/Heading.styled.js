@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledTitle = styled.h1`
-  padding: 10px;
+  padding: 20px;
   margin-top: 0;
   color: brown;
   font-size: 30px;

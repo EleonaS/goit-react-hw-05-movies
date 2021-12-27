@@ -4,16 +4,26 @@ import {
   WrapperNav,
   StyledLabel,
 } from './Navigation.styled';
+
+const active = ({ isActive }) => {
+  return {
+    color: isActive ? 'red' : '',
+  };
+};
+
 function Navigation() {
   return (
     <WrapperNav>
       <StyledNav>
-        <NavLink to="/">
+        <NavLink to="/" style={active}>
           <StyledLabel>
             Home
           </StyledLabel>
         </NavLink>
-        <NavLink to="/movies">
+        <NavLink
+          to="/movies"
+          style={active}
+        >
           <StyledLabel>
             {' '}
             Movies
@@ -24,4 +34,4 @@ function Navigation() {
   );
 }
 
-export { Navigation };
+export { Navigation, active };

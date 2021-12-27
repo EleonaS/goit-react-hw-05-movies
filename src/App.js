@@ -37,6 +37,17 @@ const NotFoundMovie = lazy(
       'views/NotFound/NotFound'
     ) /* webpackChunkName: "notFound" */,
 );
+const Cast = lazy(
+  () =>
+    import(
+      './views/Cast/Cast'
+    ) /* webpackChunkName: "cast-page"*/,
+);
+const Reviews = lazy(
+  () =>
+    import('./views/Reviews/Reviews'),
+  /* webpackChunkName: "reviews-page" */
+);
 
 function App() {
   return (
@@ -54,9 +65,18 @@ function App() {
               element={<MoviesPage />}
             />
             <Route
-              path="/movies/:movieId/*"
+              path="/movies/:movieId"
               element={<MovieDetails />}
-            />
+            >
+              <Route
+                path="/movies/:movieId/cast"
+                element={<Cast />}
+              />
+              <Route
+                path="/movies/:movieId/reviews"
+                element={<Reviews />}
+              />
+            </Route>
             <Route
               path="*"
               element={
@@ -70,6 +90,3 @@ function App() {
   );
 }
 export default App;
-
-/////
-//   уточнить по <Redirect

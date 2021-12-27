@@ -2,6 +2,7 @@ import {
   useState,
   useEffect,
 } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchMovieReviews } from '../../services/api';
 import {
@@ -14,9 +15,10 @@ import {
   Text,
 } from './Reviews.styled';
 
-function Reviews({ movieId }) {
+function Reviews() {
   const [reviews, setReviews] =
     useState([]);
+  const { movieId } = useParams(null);
 
   useEffect(() => {
     fetchMovieReviews(movieId)

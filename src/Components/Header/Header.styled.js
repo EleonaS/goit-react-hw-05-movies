@@ -5,6 +5,7 @@ const StyledHeader = styled.header`
   padding-top: 20px;
   padding-bottom: 20px;
   text-align: center;
+  box-shadow: 0 20px 20px -20px #333;
 `;
 
 export { StyledHeader };

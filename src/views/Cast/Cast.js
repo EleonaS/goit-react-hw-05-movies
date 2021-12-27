@@ -2,6 +2,7 @@ import {
   useState,
   useEffect,
 } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   fetchMovieCast,
@@ -23,11 +24,12 @@ import {
 
 import default_profile from 'images/default_profile.png';
 
-function Cast({ movieId }) {
+function Cast() {
   const [cast, setCast] = useState([]);
+  const { movieId } = useParams(null);
 
   useEffect(() => {
-    fetchMovieCast()
+    fetchMovieCast(movieId)
       .then(request =>
         setCast(request.cast),
       )
@@ -40,16 +42,21 @@ function Cast({ movieId }) {
     <Wrapper>
       <CastList>
         {cast.length > 0 ? (
-          cast.map((item, id) => (
-            <>
+          cast.map(
+            ({
+              id,
+              profile_path,
+              name,
+              character,
+            }) => (
               <CastItem key={id}>
-                {item.profile_path ? (
+                {profile_path ? (
                   <CastImage
                     src={
                       POSTER_URL +
-                      item.profile_path
+                      profile_path
                     }
-                    alt={item.name}
+                    alt={name}
                     width="200"
                   />
                 ) : (
@@ -58,23 +65,26 @@ function Cast({ movieId }) {
                       src={
                         default_profile
                       }
-                      alt={item.name}
-                      width="200"
+                      alt={name}
                     />
                   </div>
                 )}
 
                 <CastAbout>
                   <StyledName>
-                    {item.name}
+                    {name}
                   </StyledName>
+                  <p>Character: </p>
                   <StyledCharacter>
-                    {item.character}
+                    {
+                      character
+                      // || "Unknown"
+                    }
                   </StyledCharacter>
                 </CastAbout>
               </CastItem>
-            </>
-          ))
+            ),
+          )
         ) : (
           <NotFound>
             No details on the cast
