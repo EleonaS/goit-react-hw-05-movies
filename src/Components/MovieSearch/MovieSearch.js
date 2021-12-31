@@ -8,7 +8,7 @@ import {
 } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchMoviesByName } from '../../services/api';
-import { GoBackButton } from 'Components/Button/Button';
+//import { GoBackButton } from 'Components/Button/Button';
 import { Loader } from 'Components/Loader/Loader';
 import { MoviesList } from 'Components/MoviesList/MoviesList';
 import { Container } from 'Components/Container/Container';
@@ -72,7 +72,7 @@ function MoviesSearchList({
     <>
       <Container>
         {isLoading && <Loader />}
-        <GoBackButton />
+
         {movies.length > 0 && (
           <>
             <MoviesList

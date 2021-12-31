@@ -7,6 +7,7 @@ import {
 import { Container } from 'Components/Container/Container';
 import { Header } from 'Components/Header/Header';
 import { Loader } from 'Components/Loader/Loader';
+//import { NotFoundMovie } from 'views/NotFound/NotFound';
 import './App.css';
 
 ///Добавь асинхронную загрузку JS-кода для маршрутов приложения используя React.lazy() и Suspense.
@@ -31,12 +32,13 @@ const MovieDetails = lazy(() =>
   ),
 );
 
-const NotFoundMovie = lazy(
+/*const NotFoundMovie = lazy(
   () =>
     import(
       'views/NotFound/NotFound'
-    ) /* webpackChunkName: "notFound" */,
-);
+    ) /* webpackChunkName: "notFoundMovie" */
+/*,);*/
+
 const Cast = lazy(
   () =>
     import(
@@ -80,7 +82,16 @@ function App() {
             <Route
               path="*"
               element={
-                <NotFoundMovie />
+                <main
+                  style={{
+                    padding: '1rem',
+                  }}
+                >
+                  <p>
+                    There's nothing
+                    here!
+                  </p>
+                </main>
               }
             />
           </Routes>
