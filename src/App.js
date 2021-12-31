@@ -81,7 +81,16 @@ function App() {
             </Route>
             <Route
               path="*"
-              element={
+              element={<Home />}
+            />
+          </Routes>
+        </Suspense>
+      </Container>
+    </>
+  );
+}
+export default App;
+/*element={
                 <main
                   style={{
                     padding: '1rem',
@@ -92,12 +101,4 @@ function App() {
                     here!
                   </p>
                 </main>
-              }
-            />
-          </Routes>
-        </Suspense>
-      </Container>
-    </>
-  );
-}
-export default App;
+              }*/
